@@ -2,6 +2,9 @@ const { Given, When, Then } = require('@wdio/cucumber-framework');
 
 const HomePage = require('../pageobjects/home.page');
 
+Given(/^I click on allow cookie button if exist$/, async () => {
+    await HomePage.allowCookie()
+});
 
 Given(/^I am on the home page$/, async () => {
     await HomePage.open()
@@ -15,12 +18,8 @@ Given(/^I fill the form$/, async () => {
     await HomePage.fillLetsConnectForm()
 });
 
-// When(/^I login with (\w+) and (.+)$/, async (username, password) => {
-//     await LoginPage.login(username, password)
-// });
+Given(/^I verify success message$/, async () => {
+    await HomePage.verifySuccessMessage()
+});
 
-// Then(/^I should see a flash message saying (.*)$/, async (message) => {
-//     await expect(SecurePage.flashAlert).toBeExisting();
-//     await expect(SecurePage.flashAlert).toHaveTextContaining(message);
-// });
 
