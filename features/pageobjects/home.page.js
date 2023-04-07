@@ -47,14 +47,14 @@ class HomePage extends Page {
         return $(locators.SUCCESS_MESSAGE_DIV)
     }
 
-    get firstNameRequired(){
+    get firstNameRequired() {
         return $(locators.FIRST_NAME_REQUIRED)
     }
-    get lastNameRequired(){
+    get lastNameRequired() {
         return $(locators.LAST_NAME_REQUIRED)
     }
 
-    get emailRequired(){
+    get emailRequired() {
         return $(locators.EMAIL_REQUIRED)
     }
 
@@ -66,49 +66,49 @@ class HomePage extends Page {
         await this.menuLetsConnect.click()
     }
 
-    async allowCookie() {               
-        let elementVisible = await this.btnAllowCookie.isExisting()    
-        if(elementVisible){
+    async allowCookie() {
+        let elementVisible = await this.btnAllowCookie.isExisting()
+        if (elementVisible) {
             await this.btnAllowCookie.click()
-        }        
+        }
     }
 
-    async verifyLetsConnectPage() {       
-        await expect(browser).toHaveUrlContaining(testData.CONTACT_US_URL_SEGMENT)    
+    async verifyLetsConnectPage() {
+        await expect(browser).toHaveUrlContaining(testData.CONTACT_US_URL_SEGMENT)
     }
 
     async fillLetsConnectForm() {
-        await this.checkAsteriskMark(this.firstNameRequired) 
+        await this.checkAsteriskMark(this.firstNameRequired)
         await this.firstName.setValue(testData.FIRST_NAME);
 
-        await this.checkAsteriskMark(this.lastNameRequired) 
+        await this.checkAsteriskMark(this.lastNameRequired)
         await this.lastName.setValue(testData.LAST_NAME);
-        
-        await this.checkAsteriskMark(this.emailRequired) 
+
+        await this.checkAsteriskMark(this.emailRequired)
         await this.email.setValue(testData.EMAIL);
 
         await this.country.setValue(testData.COUNTRY);
         await this.mobile.setValue(testData.MOBILE);
-       
-        await this.message.setValue(testData.MESSAGE);      
+
+        await this.message.setValue(testData.MESSAGE);
     }
 
-    async submitFormByClick() {       
-        await this.btnSubmit.scrollIntoView();  
+    async submitFormByClick() {
+        await this.btnSubmit.scrollIntoView();
         await this.btnSubmit.click()
     }
 
-    async submitFormByTab() {        
+    async submitFormByTab() {
         await browser.keys("\ue004")
     }
 
 
-    async verifySuccessMessage() {        
+    async verifySuccessMessage() {
         await expect(this.successMessage).toHaveText(testData.SUCCESS_MESSAGE)
     }
-    
 
-    async verifySuccessMessage() {        
+
+    async verifySuccessMessage() {
         await expect(this.successMessage).toHaveText(testData.SUCCESS_MESSAGE)
     }
 
