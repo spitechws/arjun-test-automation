@@ -47,10 +47,7 @@ class HomePage extends Page {
         return $(locators.SUCCESS_MESSAGE_DIV)
     }
 
-    get googleCaptchaSkipButton() {
-        return $(locators.GOOGLE_CAPTCHA_SKIP)
-    }
-
+   
     open() {
         return browser.url(properties.BASE_URL)
     }
@@ -59,8 +56,15 @@ class HomePage extends Page {
         await this.menuLetsConnect.click()
     }
 
-    async allowCookie() {      
-        await this.btnAllowCookie.click()
+    async allowCookie() {               
+        let elementVisible = await this.btnAllowCookie.isExisting()    
+        if(elementVisible){
+            await this.btnAllowCookie.click()
+        }        
+    }
+
+    async verifyLetsConnectPage() {       
+        await expect(browser).toHaveUrlContaining(testData.CONTACT_US_URL_SEGMENT)    
     }
 
     async fillLetsConnectForm() {
@@ -69,10 +73,23 @@ class HomePage extends Page {
         await this.country.setValue(testData.COUNTRY);
         await this.mobile.setValue(testData.MOBILE);
         await this.email.setValue(testData.EMAIL);
-        await this.message.setValue(testData.MESSAGE);           
-        await this.btnSubmit.scrollIntoView();            
+        await this.message.setValue(testData.MESSAGE);      
+    }
+
+    async submitFormByClick() {       
+        await this.btnSubmit.scrollIntoView();  
         await this.btnSubmit.click()
     }
+
+    async submitFormByTab() {        
+        await browser.keys("\ue004")
+    }
+
+
+    async verifySuccessMessage() {        
+        await expect(this.successMessage).toHaveText(testData.SUCCESS_MESSAGE)
+    }
+    
 
     async verifySuccessMessage() {        
         await expect(this.successMessage).toHaveText(testData.SUCCESS_MESSAGE)

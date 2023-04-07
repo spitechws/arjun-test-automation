@@ -6,4 +6,5 @@ export default {
     COUNTRY:'India',
     MESSAGE:'Test message for lets connect feature check',
     SUCCESS_MESSAGE:'Thank you for getting in touch.',
+    CONTACT_US_URL_SEGMENT:'/contact-us'
   }

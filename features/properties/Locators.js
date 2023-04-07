@@ -11,5 +11,4 @@ export default {
   MESSAGE: '[name="message"]',
   SUBMIT_BUTTON: '.hs-button.primary.large',
   SUCCESS_MESSAGE_DIV: '.submitted-message div',
-  GOOGLE_CAPTCHA_SKIP: '#recaptcha-verify-button',
 }
