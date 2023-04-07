@@ -53,7 +53,7 @@ class HomePage extends Page {
     get lastNameRequired(){
         return $(locators.LAST_NAME_REQUIRED)
     }
-    
+
     get emailRequired(){
         return $(locators.EMAIL_REQUIRED)
     }
@@ -83,6 +83,7 @@ class HomePage extends Page {
 
         await this.checkAsteriskMark(this.lastNameRequired) 
         await this.lastName.setValue(testData.LAST_NAME);
+        
         await this.checkAsteriskMark(this.emailRequired) 
         await this.email.setValue(testData.EMAIL);
 
