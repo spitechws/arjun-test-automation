@@ -11,4 +11,7 @@ export default {
   MESSAGE: '[name="message"]',
   SUBMIT_BUTTON: '.hs-button.primary.large',
   SUCCESS_MESSAGE_DIV: '.submitted-message div',
+  FIRST_NAME_REQUIRED: '//*[@id="label-firstname-1f9f4219-a483-4f4a-86e0-75c7424d9d95_5884"]/span[2]',
+  LAST_NAME_REQUIRED: '//*[@id="label-lastname-1f9f4219-a483-4f4a-86e0-75c7424d9d95_5884"]/span[2]',
+  EMAIL_REQUIRED: '//*[@id="label-email-1f9f4219-a483-4f4a-86e0-75c7424d9d95_5884"]/span[2]',
 }

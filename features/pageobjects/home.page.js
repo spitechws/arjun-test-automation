@@ -47,7 +47,17 @@ class HomePage extends Page {
         return $(locators.SUCCESS_MESSAGE_DIV)
     }
 
-   
+    get firstNameRequired(){
+        return $(locators.FIRST_NAME_REQUIRED)
+    }
+    get lastNameRequired(){
+        return $(locators.LAST_NAME_REQUIRED)
+    }
+    
+    get emailRequired(){
+        return $(locators.EMAIL_REQUIRED)
+    }
+
     open() {
         return browser.url(properties.BASE_URL)
     }
@@ -68,11 +78,17 @@ class HomePage extends Page {
     }
 
     async fillLetsConnectForm() {
+        await this.checkAsteriskMark(this.firstNameRequired) 
         await this.firstName.setValue(testData.FIRST_NAME);
+
+        await this.checkAsteriskMark(this.lastNameRequired) 
         await this.lastName.setValue(testData.LAST_NAME);
+        await this.checkAsteriskMark(this.emailRequired) 
+        await this.email.setValue(testData.EMAIL);
+
         await this.country.setValue(testData.COUNTRY);
         await this.mobile.setValue(testData.MOBILE);
-        await this.email.setValue(testData.EMAIL);
+       
         await this.message.setValue(testData.MESSAGE);      
     }
 
