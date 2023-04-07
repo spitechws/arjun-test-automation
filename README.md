@@ -1,11 +1,9 @@
-# agnos.io-automation
+# Switch Environment
 
-# Switch Environment 
+#### To Run automation on local enviroment
 
-#### To Run automation on local enviroment 
-- export ENV=local 
+- export ENV=local
 
-#### To Run in live environment 
-- export ENV=live 
+#### To Run in live environment
 
-
+- export ENV=live
