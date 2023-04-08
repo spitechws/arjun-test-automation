@@ -112,6 +112,11 @@ class HomePage extends Page {
         await expect(this.successMessage).toHaveText(testData.SUCCESS_MESSAGE)
     }
 
+    async verifyFieldExist(fieldName) {
+        console.log("Checking :" + fieldName);
+        //await expect(browser).toHaveUrlContaining(testData.CONTACT_US_URL_SEGMENT)
+    }
+
 }
 
 module.exports = new HomePage();

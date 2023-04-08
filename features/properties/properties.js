@@ -3,10 +3,19 @@ let URL = '';
 
 switch (process.env.ENV) {
     case "local":
-        URL = 'https://localhost/agnos.io'
+        URL = 'http://localhost/agnos.io'
         break;
-    case "live":
+    case "preProd":
+        URL = 'https://preprod.agnos.io/'
+        break;
+    case "prod":
         URL = 'https://www.agnos.io/'
+        break;
+    case "qa":
+        URL = 'https://qa.agnos.io/'
+        break;
+    case "dev":
+        URL = 'https://dev.agnos.io/'
         break;
     default:
         URL = '';

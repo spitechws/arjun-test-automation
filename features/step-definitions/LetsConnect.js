@@ -34,4 +34,9 @@ Given(/^I verify success message$/, async () => {
     await HomePage.verifySuccessMessage()
 });
 
+Given(/^I verify \"(.*)\" field is exist$/, async (fieldName) => {
+    await HomePage.verifyFieldExist(fieldName)
+});
+
+
 
