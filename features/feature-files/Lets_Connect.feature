@@ -1,7 +1,5 @@
 Feature: Lets Connect Feature
 
-
-
   @case1
   Scenario Outline: Verify that the form contains First Name, Last Name, Business Email Id, Phone number, Country/Region, Company,How can we help, Submit
     Given I am on the home page
@@ -26,7 +24,7 @@ Feature: Lets Connect Feature
     Then I verify "first_name" field is required
     Then I verify "last_name" field is required
     Then I verify "email" field is required
-    
+
   @case3
   Scenario Outline: Fill the lets conenct form and submit by enter key press
     Given I am on the home page

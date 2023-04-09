@@ -177,43 +177,13 @@ class HomePage extends Page {
     async verifyFieldRequried(fieldName) {
         switch (fieldName) {
             case "first_name":
-                await this.checkAsteriskMark(this.firstNameRequired)
-                await expect(this.firstNameLabel).toBePresent()
-                await expect(this.firstNameLabel).toHaveText('First Name')
+                await this.checkAsteriskMark(this.firstNameRequired)               
                 break;
             case "last_name":
-                await expect(this.lastName).toBePresent()
-                await expect(this.lastNameLabel).toBePresent()
-                await expect(this.lastNameLabel).toHaveText('Last Name')
+                await this.checkAsteriskMark(this.lastNameRequired)  
                 break;
             case "email":
-                await expect(this.email).toBePresent()
-                await expect(this.emailLabel).toBePresent()
-                await expect(this.emailLabel).toHaveText('Business Email')
-                break;
-            case "mobile":
-                await expect(this.mobile).toBePresent()
-                await expect(this.mobileLabel).toBePresent()
-                await expect(this.mobileLabel).toHaveText('Phone Number')
-                break;
-            case "country":
-                await expect(this.country).toBePresent()
-                await expect(this.countryLabel).toBePresent()
-                await expect(this.countryLabel).toHaveText('Country/ Region')
-                break;
-            case "organization":
-                await expect(this.organization).toBePresent()
-                await expect(this.organizationLabel).toBePresent()
-                await expect(this.organizationLabel).toHaveText('Company / Organization')
-                break;
-            case "message":
-                await expect(this.message).toBePresent()
-                await expect(this.messageLabel).toBePresent()
-                await expect(this.messageLabel).toHaveText('How Can We Help You?')
-                break;
-            case "submit_button":
-                await expect(this.btnSubmit).toBePresent()
-                await expect(this.btnSubmit).toHaveAttribute('value', 'Submit')
+                await this.checkAsteriskMark(this.emailRequired)  
                 break;
         }
     }
