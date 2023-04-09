@@ -19,8 +19,13 @@ Given(/^I verify lets connect page displayed$/, async () => {
 });
 
 Given(/^I fill the form$/, async () => {
-    await HomePage.fillLetsConnectForm()
+    await HomePage.fillForm()
 });
+
+Given(/^I fill the form by skipping required field$/, async () => {
+    await HomePage.fillFormBySkippingRequiredField()
+});
+
 
 Given(/^I submit form by clicking on click button$/, async () => {
     await HomePage.submitFormByClick()
@@ -33,6 +38,12 @@ Given(/^I submit form by pressing enter key$/, async () => {
 Given(/^I verify success message$/, async () => {
     await HomePage.verifySuccessMessage()
 });
+
+Given(/^I verify validation message showing for incomplete form$/, async () => {
+    await HomePage.verifyFormIncompleteMessage()
+});
+
+
 
 Given(/^I verify \"(.*)\" field is exist$/, async (fieldName) => {
     await HomePage.verifyFieldExist(fieldName)

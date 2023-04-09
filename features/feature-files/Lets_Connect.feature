@@ -42,3 +42,13 @@ Feature: Lets Connect Feature
     Then I verify lets connect page displayed
     Then I fill the form
     Then I submit form by clicking on click button
+
+  @case5
+  Scenario Outline: Verify that system generates a validation message when clicking on submit button without filling all the mandatory fields.
+    Given I am on the home page
+    When I click on allow cookie button if exist
+    When I click on lets connect menu
+    Then I verify lets connect page displayed
+    Then I fill the form by skipping required field
+    Then I submit form by clicking on click button
+    Then I verify validation message showing for incomplete form

@@ -83,6 +83,10 @@ class HomePage extends Page {
         return $(locators.EMAIL_REQUIRED)
     }
 
+    get formIncompleteMessage() {
+        return $(locators.FORM_INCOMPLETE_MESSAGE)
+    }
+
     open() {
         return browser.url(properties.BASE_URL)
     }
@@ -102,8 +106,17 @@ class HomePage extends Page {
         await expect(browser).toHaveUrlContaining(testData.CONTACT_US_URL_SEGMENT)
     }
 
-    async fillLetsConnectForm() {        
+    async fillForm() {
         await this.firstName.setValue(testData.FIRST_NAME);
+        await this.lastName.setValue(testData.LAST_NAME);
+        await this.email.setValue(testData.EMAIL);
+        await this.country.setValue(testData.COUNTRY);
+        await this.mobile.setValue(testData.MOBILE);
+        await this.message.setValue(testData.MESSAGE);
+    }
+
+    // skip first name field to check the required field validation is showing or not?
+    async fillFormBySkippingRequiredField() {
         await this.lastName.setValue(testData.LAST_NAME);
         await this.email.setValue(testData.EMAIL);
         await this.country.setValue(testData.COUNTRY);
@@ -126,8 +139,8 @@ class HomePage extends Page {
     }
 
 
-    async verifySuccessMessage() {
-        await expect(this.successMessage).toHaveText(testData.SUCCESS_MESSAGE)
+    async verifyFormIncompleteMessage() {
+        await expect(this.formIncompleteMessage).toHaveText(testData.FORM_INCOMPLETE_MESSAGE)
     }
 
     async verifyFieldExist(fieldName) {
@@ -177,13 +190,13 @@ class HomePage extends Page {
     async verifyFieldRequried(fieldName) {
         switch (fieldName) {
             case "first_name":
-                await this.checkAsteriskMark(this.firstNameRequired)               
+                await this.checkAsteriskMark(this.firstNameRequired)
                 break;
             case "last_name":
-                await this.checkAsteriskMark(this.lastNameRequired)  
+                await this.checkAsteriskMark(this.lastNameRequired)
                 break;
             case "email":
-                await this.checkAsteriskMark(this.emailRequired)  
+                await this.checkAsteriskMark(this.emailRequired)
                 break;
         }
     }
