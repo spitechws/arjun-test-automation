@@ -8,6 +8,6 @@
 
 - export ENV=live
 
-## Run Specific Tag
+### Run Specific Case Example : @case1 @case2 ....@case8 
 
-- npm run wdio ./wdio.conf.js -- --cucumberOpts.tagExpression="@test3"
+- run wdio ./wdio.conf.js -- --cucumberOpts.tagExpression="@case1"
