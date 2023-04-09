@@ -23,3 +23,7 @@
 
 #### Execute all senario in one go
 - npm run wdio ./wdio.conf.js
+
+
+### See Report
+- npm run allure-report

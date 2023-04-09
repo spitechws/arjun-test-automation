@@ -1,5 +1,7 @@
 
-const { TimelineService } = require('wdio-timeline-reporter/timeline-service');
+//const allure = require('@wdio/allure-reporter').default;
+
+const allure = require('allure-commandline')
 
 exports.config = {
     //
@@ -115,7 +117,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver', [TimelineService]],
+    services: ['chromedriver'],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -138,12 +140,28 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: ['spec',
-        ['timeline', {
-            outputDir: './reports/',
-            embedImages: true,
-            screenshotsStrategy:'none',
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
         }]
     ],
+
+    beforeSuite: function (suite) {
+        global.allure = allure;
+        allure.addFeature(suite.name);
+        allure.addDescription("generating Allure reports " + suite.name);
+    },
+
+    beforeTest: function (test, context) {
+        allure.addEnvironment("BROWSER", browser.capabilities.browserName);
+        allure.addEnvironment("BROWSER_VERSION", browser.capabilities.version);
+        allure.addEnvironment("PLATFORM", browser.capabilities.platform);
+        allure.addDescription("generating Allure reports" + test.title);
+        allure.addTestId("TC-001" + test.title);
+        allure.addLabel("label" + + today.toISOString().replace(/[^\w]/g, "") + ".png");
+    },
+
 
 
     //
@@ -272,8 +290,11 @@ exports.config = {
      * @param {number}             result.duration  duration of scenario in milliseconds
      * @param {Object}             context          Cucumber World object
      */
-    // afterStep: function (step, scenario, result, context) {
-    // },
+    afterStep: async function (step, scenario, { error, duration, passed }, context) {
+        if (error) {
+            await browser.takeScreenshot();
+        }
+    },
     /**
      *
      * Runs after a Cucumber Scenario.
@@ -329,8 +350,26 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete: function (exitCode, config, capabilities, results) {
+        const reportError = new Error('Could not generate Allure report')
+        const generation = allure(['generate', 'allure-results', '--clean'])
+        return new Promise((resolve, reject) => {
+            const generationTimeout = setTimeout(
+                () => reject(reportError),
+                5000)
+
+            generation.on('exit', function (exitCode) {
+                clearTimeout(generationTimeout)
+
+                if (exitCode !== 0) {
+                    return reject(reportError)
+                }
+
+                console.log('Allure report successfully generated')
+                resolve()
+            })
+        })
+    },
     /**
     * Gets executed when a refresh happens.
     * @param {String} oldSessionId session ID of the old session
