@@ -1,6 +1,6 @@
 Feature: Lets Connect Feature
 
-  @case1
+  @FieldExist
   Scenario Outline: Verify that the form contains First Name, Last Name, Business Email Id, Phone number, Country/Region, Company,How can we help, Submit
     Given I am on the home page
     When I click on allow cookie button if exist
@@ -15,7 +15,7 @@ Feature: Lets Connect Feature
     Then I verify "message" field is exist
     Then I verify "submit_button" field is exist
 
-  @case2
+  @RequiredFields
   Scenario Outline: Verify that all the required/mandatory fields are marked with * against the field
     Given I am on the home page
     When I click on allow cookie button if exist
@@ -25,7 +25,7 @@ Feature: Lets Connect Feature
     Then I verify "last_name" field is required
     Then I verify "email" field is required
 
-  @case3
+  @RegisterOnEnter
   Scenario Outline: Fill the lets conenct form and submit by enter key press
     Given I am on the home page
     When I click on allow cookie button if exist
@@ -34,7 +34,7 @@ Feature: Lets Connect Feature
     Then I fill the form
     Then I submit form by pressing enter key
 
-  @case4
+  @Register
   Scenario Outline: Fill the lets conenct form and submit by clicking submit button
     Given I am on the home page
     When I click on allow cookie button if exist
@@ -43,7 +43,7 @@ Feature: Lets Connect Feature
     Then I fill the form
     Then I submit form by clicking on click button
 
-  @case5
+  @Validation
   Scenario Outline: Verify that system generates a validation message when clicking on submit button without filling all the mandatory fields.
     Given I am on the home page
     When I click on allow cookie button if exist
@@ -53,7 +53,7 @@ Feature: Lets Connect Feature
     Then I submit form by clicking on click button
     Then I verify validation message showing for incomplete form
 
-  @case6
+  @CheckBlankSpace
   Scenario Outline: Verify that entering blank spaces on mandatory fields lead to validation error
     Given I am on the home page
     When I click on allow cookie button if exist
@@ -63,7 +63,7 @@ Feature: Lets Connect Feature
     Then I submit form by clicking on click button
     Then I verify validation message showing for incomplete form
 
-  @case7
+  @OprionalFields
   Scenario Outline: Verify that clicking on submit button by leaving optional fields, submits the data to the server without any validation error
     Given I am on the home page
     When I click on allow cookie button if exist
@@ -72,7 +72,7 @@ Feature: Lets Connect Feature
     Then I fill the form by skipping optional field
     Then I submit form by clicking on click button
 
-  @case8
+  @EmailFormat
   Scenario Outline: Verify that the validation of email field by entering incorrect email id
     Given I am on the home page
     When I click on allow cookie button if exist

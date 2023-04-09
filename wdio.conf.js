@@ -1,7 +1,4 @@
-
-// wdio.config.ts
-//import {ReportGenerator, HtmlReporter} from 'wdio-html-nice-reporter';
-const log4js = require('@log4js-node/log4js-api');
+const {ReportAggregator, HtmlReporter} = require('wdio-html-nice-reporter');
 
 exports.config = {
     //
@@ -10,7 +7,7 @@ exports.config = {
     // ====================
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
-    
+
     //
     // ==================
     // Specify Test Files
@@ -57,7 +54,7 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-    
+
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
@@ -77,7 +74,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'debug',
     //
     // Set specific log levels per logger
     // loggers:
@@ -88,10 +85,10 @@ exports.config = {
     // - @wdio/sumologic-reporter
     // - @wdio/cli, @wdio/config, @wdio/utils
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    // logLevels: {
-    //     webdriver: 'info',
-    //     '@wdio/appium-service': 'info'
-    // },
+    logLevels: {
+        webdriver: 'debug',
+        '@wdio/appium-service': 'info'
+    },
     //
     // If you only want to run your tests until a specific amount of tests have failed use
     // bail (default is 0 - don't bail, run all tests).
@@ -118,7 +115,7 @@ exports.config = {
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     services: ['chromedriver'],
-    
+
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks
@@ -140,22 +137,21 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: ['spec',
-    ["html-nice", {
-        outputDir: './reports/html-reports/',
-        filename: 'report.html',
-        reportTitle: 'Test Report Title',
-        linkScreenshots: true,
-        //to show the report in a browser when done
-        showInBrowser: true,
-        collapseTests: false,
-        //to turn on screenshots after every test
-        useOnAfterCommandForScreenshot: false,
-
-        //to initialize the logger
-        LOG: log4js.getLogger("default")
-    }
-    ]
-],
+        ["html-nice", {
+            outputDir: './reports/',
+            filename: 'report.html',
+            reportTitle: 'Test Report',
+            linkScreenshots: true,
+            //to show the report in a browser when done
+            showInBrowser: true,
+            collapseTests: false,
+            //to turn on screenshots after every test
+            useOnAfterCommandForScreenshot: false,
+            //to initialize the logger
+            //LOG: log4js.getLogger('default')
+        }
+        ]
+    ],
 
 
     //
@@ -184,7 +180,7 @@ exports.config = {
         // <boolean> Enable this config to treat undefined definitions as warnings.
         ignoreUndefinedDefinitions: false
     },
-    
+
     //
     // =====
     // Hooks
@@ -237,6 +233,7 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {Object}         browser      instance of created browser/device session
      */
+    
     // before: function (capabilities, specs) {
     // },
     /**
@@ -305,7 +302,7 @@ exports.config = {
      */
     // afterFeature: function (uri, feature) {
     // },
-    
+
     /**
      * Runs after a WebdriverIO command gets executed
      * @param {String} commandName hook command name
