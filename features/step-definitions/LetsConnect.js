@@ -26,6 +26,19 @@ Given(/^I fill the form by skipping required field$/, async () => {
     await HomePage.fillFormBySkippingRequiredField()
 });
 
+Given(/^I fill the form with blank space in required field$/, async () => {
+    await HomePage.fillFormWithSpace()
+});
+
+Given(/^I fill the form by skipping optional field$/, async () => {
+    await HomePage.fillFormSkipOptionalField()
+});
+
+Given(/^I fill the form with incorrect email id$/, async () => {
+    await HomePage.fillFormIncorrectEmailId()
+});
+
+
 
 Given(/^I submit form by clicking on click button$/, async () => {
     await HomePage.submitFormByClick()
@@ -43,7 +56,9 @@ Given(/^I verify validation message showing for incomplete form$/, async () => {
     await HomePage.verifyFormIncompleteMessage()
 });
 
-
+Given(/^I verify email validation message$/, async () => {
+    await HomePage.verifyEmailValidationMessage()
+});
 
 Given(/^I verify \"(.*)\" field is exist$/, async (fieldName) => {
     await HomePage.verifyFieldExist(fieldName)

@@ -1,4 +1,5 @@
 export default {
+
   BUTTON_ACCEPT_COOKIE: '#hs-eu-confirmation-button',
   MENU_LETS_CONENCT: '.lets-connect-menu',
 
@@ -25,6 +26,7 @@ export default {
   FIRST_NAME_REQUIRED: '//*[@id="label-firstname-1f9f4219-a483-4f4a-86e0-75c7424d9d95_5884"]/span[2]',
   LAST_NAME_REQUIRED: '//*[@id="label-lastname-1f9f4219-a483-4f4a-86e0-75c7424d9d95_5884"]/span[2]',
   EMAIL_REQUIRED: '//*[@id="label-email-1f9f4219-a483-4f4a-86e0-75c7424d9d95_5884"]/span[2]',
+  FORM_INCOMPLETE_MESSAGE: '/html/body/div[2]/div/div[2]/div/div/div/div/div/div[1]/div/div/div/div/div/span/div[2]/span/div/form/div[2]/ul/li/label',
+  EMAIL_INCORRECT_MESSAGE: '//*[@id="hsForm_1f9f4219-a483-4f4a-86e0-75c7424d9d95_5884"]/fieldset[4]/div/ul/li/label',
 
-  FORM_INCOMPLETE_MESSAGE:'/html/body/div[2]/div/div[2]/div/div/div/div/div/div[1]/div/div/div/div/div/span/div[2]/span/div/form/div[2]/ul/li/label'
 }

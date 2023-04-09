@@ -52,3 +52,31 @@ Feature: Lets Connect Feature
     Then I fill the form by skipping required field
     Then I submit form by clicking on click button
     Then I verify validation message showing for incomplete form
+
+  @case6
+  Scenario Outline: Verify that entering blank spaces on mandatory fields lead to validation error
+    Given I am on the home page
+    When I click on allow cookie button if exist
+    When I click on lets connect menu
+    Then I verify lets connect page displayed
+    Then I fill the form with blank space in required field
+    Then I submit form by clicking on click button
+    Then I verify validation message showing for incomplete form
+
+  @case7
+  Scenario Outline: Verify that clicking on submit button by leaving optional fields, submits the data to the server without any validation error
+    Given I am on the home page
+    When I click on allow cookie button if exist
+    When I click on lets connect menu
+    Then I verify lets connect page displayed
+    Then I fill the form by skipping optional field
+    Then I submit form by clicking on click button
+
+  @case8
+  Scenario Outline: Verify that the validation of email field by entering incorrect email id
+    Given I am on the home page
+    When I click on allow cookie button if exist
+    When I click on lets connect menu
+    Then I verify lets connect page displayed
+    Then I fill the form with incorrect email id
+    Then I verify email validation message

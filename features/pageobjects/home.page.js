@@ -87,6 +87,10 @@ class HomePage extends Page {
         return $(locators.FORM_INCOMPLETE_MESSAGE)
     }
 
+    get incorrectEmailMessage() {
+        return $(locators.EMAIL_INCORRECT_MESSAGE)
+    }
+
     open() {
         return browser.url(properties.BASE_URL)
     }
@@ -124,6 +128,28 @@ class HomePage extends Page {
         await this.message.setValue(testData.MESSAGE);
     }
 
+    // fill space in the mandatory field to check the required field validation is showing or not?
+    async fillFormWithSpace() {
+        await this.firstName.setValue(" ");
+        await this.lastName.setValue(" ");
+        await this.email.setValue(" ");
+        await this.country.setValue(testData.COUNTRY);
+        await this.mobile.setValue(testData.MOBILE);
+        await this.message.setValue(testData.MESSAGE);
+    }
+
+    async fillFormSkipOptionalField() {
+        await this.firstName.setValue(testData.FIRST_NAME);
+        await this.lastName.setValue(testData.LAST_NAME);
+        await this.email.setValue(testData.EMAIL);
+    }
+
+    async fillFormIncorrectEmailId() {
+        await this.firstName.setValue(testData.FIRST_NAME);
+        await this.lastName.setValue(testData.LAST_NAME);
+        await this.email.setValue(testData.EMAIL_INCORRECT);
+    }
+
     async submitFormByClick() {
         await this.btnSubmit.scrollIntoView();
         await this.btnSubmit.click()
@@ -141,6 +167,17 @@ class HomePage extends Page {
 
     async verifyFormIncompleteMessage() {
         await expect(this.formIncompleteMessage).toHaveText(testData.FORM_INCOMPLETE_MESSAGE)
+    }
+
+    async verifyEmailValidationMessage() {
+        await this.email.waitUntil(async function () {
+            return (await this.getValue()) === testData.EMAIL_INCORRECT
+        }, {
+            timeout: 6000,
+            timeoutMsg: 'expected text to be different after 5s'
+        })
+        console.log(this.incorrectEmailMessage.getText())
+       await expect(this.incorrectEmailMessage).toHaveText(testData.INCORRECT_EMAIL_MESSAGE)
     }
 
     async verifyFieldExist(fieldName) {
