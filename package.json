@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {   
+  "scripts": {
     "wdio": "wdio run ./wdio.conf.js",
     "test": "wdio ./wdio.conf.js -- --cucumberOpts.tagExpression="
   },
@@ -12,6 +12,8 @@
   "dependencies": {
     "@wdio/cli": "^8.6.9",
     "cucumber": "^6.0.7",
+    "log4js-api": "^1.0.0",
+    "wdio-html-nice-reporter": "^8.1.0",
     "webdriverio": "^8.6.9"
   },
   "devDependencies": {

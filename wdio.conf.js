@@ -1,3 +1,8 @@
+
+// wdio.config.ts
+//import {ReportGenerator, HtmlReporter} from 'wdio-html-nice-reporter';
+const log4js = require('@log4js-node/log4js-api');
+
 exports.config = {
     //
     // ====================
@@ -134,7 +139,23 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    reporters: ['spec',
+    ["html-nice", {
+        outputDir: './reports/html-reports/',
+        filename: 'report.html',
+        reportTitle: 'Test Report Title',
+        linkScreenshots: true,
+        //to show the report in a browser when done
+        showInBrowser: true,
+        collapseTests: false,
+        //to turn on screenshots after every test
+        useOnAfterCommandForScreenshot: false,
+
+        //to initialize the logger
+        LOG: log4js.getLogger("default")
+    }
+    ]
+],
 
 
     //
