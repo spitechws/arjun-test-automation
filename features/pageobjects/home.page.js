@@ -39,6 +39,31 @@ class HomePage extends Page {
         return $(locators.SUBMIT_BUTTON)
     }
 
+    get firstNameLabel() {
+        return $(locators.FIRST_NAME_LABEL)
+    }
+
+    get lastNameLabel() {
+        return $(locators.LAST_NAME_LABEL)
+    }
+    get mobileLabel() {
+        return $(locators.MOBILE_LABEL)
+    }
+
+    get emailLabel() {
+        return $(locators.EMAIL_LABEL)
+    }
+    get countryLabel() {
+        return $(locators.COUNTRY_LABEL)
+    }
+    get messageLabel() {
+        return $(locators.MESSAGE_LABEL)
+    }
+    get organizationLabel() {
+        return $(locators.ORGANIZATION_LABEL)
+    }
+
+
     get btnAllowCookie() {
         return $(locators.BUTTON_ACCEPT_COOKIE)
     }
@@ -113,8 +138,47 @@ class HomePage extends Page {
     }
 
     async verifyFieldExist(fieldName) {
-        console.log("Checking :" + fieldName);
-        //await expect(browser).toHaveUrlContaining(testData.CONTACT_US_URL_SEGMENT)
+        switch (fieldName) {
+            case "first_name":
+                await await expect(this.firstName).toBePresent()
+                await await expect(this.firstNameLabel).toBePresent()
+                await await expect(this.firstNameLabel).toHaveText('First Name')
+                break;
+            case "last_name":
+                await await expect(this.lastName).toBePresent()
+                await await expect(this.lastNameLabel).toBePresent()
+                await await expect(this.lastNameLabel).toHaveText('Last Name')
+                break;
+            case "email":
+                await await expect(this.email).toBePresent()
+                await await expect(this.emailLabel).toBePresent()
+                await await expect(this.emailLabel).toHaveText('Business Email')
+                break;
+            case "mobile":
+                await await expect(this.mobile).toBePresent()
+                await await expect(this.mobileLabel).toBePresent()
+                await await expect(this.mobileLabel).toHaveText('Phone Number')
+                break;
+            case "country":
+                await await expect(this.country).toBePresent()
+                await await expect(this.countryLabel).toBePresent()
+                await await expect(this.countryLabel).toHaveText('Country/ Region')
+                break;
+            case "organization":
+                await await expect(this.organization).toBePresent()
+                await await expect(this.organizationLabel).toBePresent()
+                await await expect(this.organizationLabel).toHaveText('Company / Organization')
+                break;
+            case "message":
+                await await expect(this.message).toBePresent()
+                await await expect(this.messageLabel).toBePresent()
+                await await expect(this.messageLabel).toHaveText('How Can We Help You?')
+                break;
+            case "submit_button":
+                await await expect(this.btnSubmit).toBePresent()
+                await await expect(this.btnSubmit).toHaveAttribute('value','Submit')
+                break;
+        }
     }
 
 }
