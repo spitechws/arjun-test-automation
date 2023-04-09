@@ -26,8 +26,8 @@ Given(/^I submit form by clicking on click button$/, async () => {
     await HomePage.submitFormByClick()
 });
 
-Given(/^I submit form by pressing tab key$/, async () => {
-    await HomePage.submitFormByTab()
+Given(/^I submit form by pressing enter key$/, async () => {
+    await HomePage.submitFormByEnter()
 });
 
 Given(/^I verify success message$/, async () => {
@@ -36,6 +36,10 @@ Given(/^I verify success message$/, async () => {
 
 Given(/^I verify \"(.*)\" field is exist$/, async (fieldName) => {
     await HomePage.verifyFieldExist(fieldName)
+});
+
+Given(/^I verify \"(.*)\" field is required$/, async (fieldName) => {
+    await HomePage.verifyFieldRequried(fieldName)
 });
 
 
