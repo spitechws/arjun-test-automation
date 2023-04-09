@@ -1,4 +1,5 @@
-const {ReportAggregator, HtmlReporter} = require('wdio-html-nice-reporter');
+
+const { TimelineService } = require('wdio-timeline-reporter/timeline-service');
 
 exports.config = {
     //
@@ -114,7 +115,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    services: ['chromedriver', [TimelineService]],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -137,20 +138,11 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: ['spec',
-        ["html-nice", {
+        ['timeline', {
             outputDir: './reports/',
-            filename: 'report.html',
-            reportTitle: 'Test Report',
-            linkScreenshots: true,
-            //to show the report in a browser when done
-            showInBrowser: true,
-            collapseTests: false,
-            //to turn on screenshots after every test
-            useOnAfterCommandForScreenshot: false,
-            //to initialize the logger
-            //LOG: log4js.getLogger('default')
-        }
-        ]
+            embedImages: true,
+            screenshotsStrategy:'none',
+        }]
     ],
 
 
@@ -233,7 +225,7 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {Object}         browser      instance of created browser/device session
      */
-    
+
     // before: function (capabilities, specs) {
     // },
     /**
