@@ -9,7 +9,7 @@ module.exports = class Page {
     }
 
     async waitForSmallTime() {
-        await browser.pause(smallTimeout);
+        await browser.pause(30*smallTimeout);
     }
 
     async waitForLongTime() {
