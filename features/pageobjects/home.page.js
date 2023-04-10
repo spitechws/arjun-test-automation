@@ -132,9 +132,9 @@ class HomePage extends Page {
 
     // fill space in the mandatory field to check the required field validation is showing or not?
     async fillFormWithSpace() {
-        await this.firstName.setValue(" ");
-        await this.lastName.setValue(" ");
-        await this.email.setValue(" ");
+        await this.firstName.setValue(testData.BLANK_SPACE);
+        await this.lastName.setValue(testData.BLANK_SPACE);
+        await this.email.setValue(testData.BLANK_SPACE);
         await this.country.setValue(testData.COUNTRY);
         await this.organization.setValue(testData.ORGANIZATION);
         await this.mobile.setValue(testData.MOBILE);

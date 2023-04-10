@@ -1,8 +1,10 @@
 export default {
   FIRST_NAME: 'Arjun',
-  LAST_NAME: 'Naidu',
-  MOBILE: '7989532907',
+  LAST_NAME: 'Naidu', 
   EMAIL: 'demo123@gmail.com',
+  BLANK_SPACE: "  ",
+  MOBILE: '7989532907',
+  ORGANIZATION:'test company',
   EMAIL_INCORRECT: 'demo123@test@gmail.com',
   COUNTRY: 'India',
   MESSAGE: 'Test message for lets connect feature check',
